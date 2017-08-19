@@ -1,0 +1,6 @@
+$(".share-info.alert-info").html("<%= @status.persisted? ? "Location shared successfully" : "Something wrong happened. Please try again!" %>");
+
+$("#shared_by_me .row").append("<%= escape_javascript( render partial: "/locations/location", locals: { location: @status } ) %>")
+
+$(".share-info.alert-info").removeClass("hide-aside");
+$(".share-info.alert-danger").addClass("hide-aside");

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170819144241) do
+ActiveRecord::Schema.define(version: 20170819175036) do
 
   create_table "follows", force: :cascade do |t|
     t.integer  "followable_id",   limit: 4,                   null: false
@@ -28,16 +28,30 @@ ActiveRecord::Schema.define(version: 20170819144241) do
 
   create_table "locations", force: :cascade do |t|
     t.string   "name",       limit: 255
-    t.float    "latitude",   limit: 24
-    t.float    "longitude",  limit: 24
+    t.decimal  "latitude",               precision: 63, scale: 10
+    t.decimal  "longitude",              precision: 63, scale: 10
     t.integer  "user_id",    limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
     t.string   "type",       limit: 255
   end
 
   add_index "locations", ["id", "type"], name: "index_locations_on_id_and_type", using: :btree
   add_index "locations", ["user_id"], name: "index_locations_on_user_id", using: :btree
+
+  create_table "share_models", force: :cascade do |t|
+    t.integer "resource_id",      limit: 4
+    t.string  "resource_type",    limit: 255
+    t.integer "shared_to_id",     limit: 4
+    t.string  "shared_to_type",   limit: 255
+    t.integer "shared_from_id",   limit: 4
+    t.string  "shared_from_type", limit: 255
+    t.boolean "edit"
+  end
+
+  add_index "share_models", ["resource_type", "resource_id"], name: "index_share_models_on_resource_type_and_resource_id", using: :btree
+  add_index "share_models", ["shared_from_type", "shared_from_id"], name: "index_share_models_on_shared_from_type_and_shared_from_id", using: :btree
+  add_index "share_models", ["shared_to_type", "shared_to_id"], name: "index_share_models_on_shared_to_type_and_shared_to_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false

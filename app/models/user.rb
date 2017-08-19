@@ -7,14 +7,17 @@ class User < ActiveRecord::Base
   acts_as_follower
   acts_as_followable
   
+  sharer
+  
   has_many :follower_records, class_name: "Follow", as: :followable
   has_many :people_who_follow, class_name: "User", through: :follower_records, source: :follower, source_type: "User"
   
-  validates :username,
-    :presence => true,
-    :uniqueness => {
+  has_many :shared_to, class_name: "ShareModel", as: :shared_to
+  has_many :shared_to_locations, class_name: "Location", through: :shared_to, source: :resource, source_type: "Location" 
+  
+  validates :username, :presence => true, :uniqueness => {
     :case_sensitive => false
-  } # etc.
+  }
   
   validate :validate_username
 

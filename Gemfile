@@ -54,3 +54,4 @@ gem 'faker', group: :test
 
 gem 'bower-rails'
 gem 'acts_as_follower'
+gem 'shareable_models', git: "git@github.com:redBorder/shareable_models.git"

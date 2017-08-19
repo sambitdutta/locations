@@ -1,0 +1,8 @@
+<div class="card">
+    <div id="map_<%= location.id %>" class="small-map"></div>
+    <p class="card-text"><%= location.name %></p>
+</div>
+
+<script type="text/javascript">
+  drawMap.initMap('map_<%= location.id %>', <%= location.latitude %>, <%= location.longitude %>);
+</script>

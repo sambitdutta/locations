@@ -11,45 +11,27 @@
 <div class="album text-muted">
     <div class="container">
 
-        <div class="row">
-            <div class="card">
-                <img data-src="holder.js/100px280/thumb" alt="Card image cap">
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#shared_by_me" role="tab" aria-controls="shared_by_me">Shared by me</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#shared_with_me" role="tab" aria-controls="shared_with_me">Shared with me</a>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="shared_by_me" role="tabpanel">
+
+                <%= render partial: "shared_by_me" %>
+
             </div>
-            <div class="card">
-                <img data-src="holder.js/100px280/thumb" alt="Card image cap">
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-            <div class="card">
-                <img data-src="holder.js/100px280/thumb" alt="Card image cap">
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <div class="tab-pane" id="shared_with_me" role="tabpanel">
+
+                <%= render partial: "shared_with_me" %>
+
             </div>
 
-            <div class="card">
-                <img data-src="holder.js/100px280/thumb" alt="Card image cap">
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-            <div class="card">
-                <img data-src="holder.js/100px280/thumb" alt="Card image cap">
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-            <div class="card">
-                <img data-src="holder.js/100px280/thumb" alt="Card image cap">
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-
-            <div class="card">
-                <img data-src="holder.js/100px280/thumb" alt="Card image cap">
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-            <div class="card">
-                <img data-src="holder.js/100px280/thumb" alt="Card image cap">
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-            <div class="card">
-                <img data-src="holder.js/100px280/thumb" alt="Card image cap">
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
         </div>
 
     </div>
@@ -57,23 +39,27 @@
 
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-lg">
 
-      <div class="modal-content"></div>
+        <div class="modal-content"></div>
 
-  </div>
+    </div>
 </div>
 
 
-<% content_tag :js do %>
+<% content_for :js do %>
   <!-- Bootstrap core JavaScript
   ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->
+  
+  <%= javascript_include_tag 'share', 'holder.min' %>
+  
   <script>
     $(function () {
         Holder.addTheme("thumb", {background: "#55595c", foreground: "#eceeef", text: "Thumbnail"});
     });
   </script>
+  
 <%end%>
 
 
