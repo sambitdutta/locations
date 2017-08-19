@@ -11,7 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170819082242) do
+ActiveRecord::Schema.define(version: 20170819144241) do
+
+  create_table "follows", force: :cascade do |t|
+    t.integer  "followable_id",   limit: 4,                   null: false
+    t.string   "followable_type", limit: 255,                 null: false
+    t.integer  "follower_id",     limit: 4,                   null: false
+    t.string   "follower_type",   limit: 255,                 null: false
+    t.boolean  "blocked",                     default: false, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "follows", ["followable_id", "followable_type"], name: "fk_followables", using: :btree
+  add_index "follows", ["follower_id", "follower_type"], name: "fk_follows", using: :btree
+
+  create_table "locations", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.float    "latitude",   limit: 24
+    t.float    "longitude",  limit: 24
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "type",       limit: 255
+  end
+
+  add_index "locations", ["id", "type"], name: "index_locations_on_id_and_type", using: :btree
+  add_index "locations", ["user_id"], name: "index_locations_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -33,4 +59,5 @@ ActiveRecord::Schema.define(version: 20170819082242) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
+  add_foreign_key "locations", "users"
 end

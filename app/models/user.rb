@@ -4,6 +4,12 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable, :authentication_keys => [:login]
   
+  acts_as_follower
+  acts_as_followable
+  
+  has_many :follower_records, class_name: "Follow", as: :followable
+  has_many :people_who_follow, class_name: "User", through: :follower_records, source: :follower, source_type: "User"
+  
   validates :username,
     :presence => true,
     :uniqueness => {

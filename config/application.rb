@@ -31,6 +31,8 @@ module Locations
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+    
+    config.autoload_paths += %W(#{Rails.root}/app/forms #{Rails.root}/app/services)
 
     config.generators do |g|
       g.test_framework :rspec,

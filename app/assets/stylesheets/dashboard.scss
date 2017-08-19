@@ -3,8 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 /*
-* require 'bootstrap-sass-official'
 *= require 'bootstrap.min'
+*= require select2.min
+*= require token-input
+*= require token-input-facebook
 *= require 'map'
 *= require_self
 */
@@ -71,4 +73,68 @@ footer {
 
 footer p {
   margin-bottom: .25rem;
+}
+
+.alert {
+    margin-bottom: 0rem !important;    
+}
+
+
+
+.side-filter-form ul.token-input-list-facebook{ 
+    padding: 0 3px;
+}
+.side-filter-form ul.token-input-list-facebook li.token-input-token-facebook{
+    float: left;
+    white-space: normal;
+    width: 100%;
+    box-sizing: border-box;
+    margin-left: 0;
+    margin-right: 0;
+}
+.side-filter-form  ul.token-input-list-facebook li.token-input-token-facebook p{
+    width: 90%;
+    float: left;
+}
+.side-filter-form  ul.token-input-list-facebook li.token-input-token-facebook span{
+    float: left;
+}
+
+
+
+ul.token-input-list-facebook{
+    border-color: #ccc;
+    min-height: 34px;
+    font-family: 'Raleway',sans-serif;
+}
+.form-group ul.token-input-list-facebook{
+    width: 100%;
+}
+ul.token-input-list-facebook li.token-input-token-facebook{
+    border-radius: 0;
+    font-size: 11px;
+    font-family: 'Raleway',sans-serif;
+    padding: 3px;
+}
+    
+ul.token-input-list-facebook li.token-input-token-facebook span{
+    font-size: 17px;
+    line-height: 11px;
+    position: relative;
+    top: 1px;
+}
+div.token-input-dropdown-facebook{
+    font-size: 11px;
+    font-family: 'Raleway',sans-serif;
+}
+div.token-input-dropdown-facebook ul li {
+    padding: 6px 8px;
+}
+div.token-input-dropdown-facebook ul li.token-input-selected-dropdown-item-facebook {
+    background-color: #d0d0d0;
+}
+ul.token-input-list-facebook li input {
+    padding: 6px 8px 3px;
+    font-size: 12px;
+    //min-width: 176px;
 }

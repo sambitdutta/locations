@@ -3,8 +3,7 @@
         <h1 class="jumbotron-heading">Maps</h1>
         <p class="lead text-muted"></p>
         <p>
-            <a href="javascript:void(0);" class="btn btn-primary">Main call to action</a>
-            <a href="javascript:void(0);" class="btn btn-secondary">Secondary action</a>
+            <button type="button" data-url="<%= new_location_path %>" id="shareLocation" class="btn btn-info btn-lg">Share Location</button>
         </p>
     </div>
 </section>
@@ -56,14 +55,20 @@
     </div>
 </div>
 
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+      <div class="modal-content"></div>
+
+  </div>
+</div>
+
 
 <% content_tag :js do %>
   <!-- Bootstrap core JavaScript
   ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->
-  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script> -->
-  <%= javascript_include_tag 'holder.min' %>
   <script>
     $(function () {
         Holder.addTheme("thumb", {background: "#55595c", foreground: "#eceeef", text: "Thumbnail"});

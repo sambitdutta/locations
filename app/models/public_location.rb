@@ -1,0 +1,3 @@
+class PublicLocation < Location
+  
+end

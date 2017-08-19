@@ -12,4 +12,15 @@
 //
 //= require jquery
 //= require jquery_ujs
-// require_tree .
+//= require holder.min
+//= require tether.min
+//= require bootstrap.min
+//= require select2.min
+//= require jquery.tokeninput.js
+//= require share
+
+
+
+
+
+

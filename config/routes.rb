@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   get 'dashboard/index'
 
   devise_for :users
@@ -56,4 +57,10 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  
+  resources :locations, only: [:new, :create]
+  
+  resources :people, only: [:index]
+  
+  get ":username" => "people#show", constraints: { username: /.*/ }
 end
