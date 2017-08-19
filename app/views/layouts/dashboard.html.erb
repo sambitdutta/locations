@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Locations</title>
+  <%= stylesheet_link_tag    'dashboard', media: 'all' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="collapse bg-inverse" id="navbarHeader">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 py-4">
+        <h4 class="text-white">About</h4>
+        <p class="text-muted">Maps form an important part of our life now.</p>
+      </div>
+      <div class="col-sm-4 py-4">
+        <ul class="list-unstyled float-right">
+          <li><%= link_to "Log Out", destroy_user_session_path, method: :delete, class: 'text-white' %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="navbar navbar-inverse bg-inverse">
+  <div class="container d-flex justify-content-between">
+    <a href="javascript:void(0);" class="navbar-brand"><%= current_user.username %></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+</div>
+
+<% if notice.present? %>
+    <aside class="alert alert-info">
+      <%= notice %>
+    </aside>
+<% end %>
+<% if alert.present? %>
+    <aside class="alert alert-danger">
+      <%= alert %>
+    </aside>
+<% end %>
+
+
+<%= yield %>
+
+
+<footer class="text-muted">
+  <div class="container">
+    <p class="float-right">
+      <a href="javascript:void(0);">Back to top</a>
+    </p>
+    <p>Maps example</p>
+  </div>
+</footer>
+
+</body>
+
+<%= javascript_include_tag 'application' %>
+<%= yield :js %>
+<%= javascript_include_tag 'tether.min', 'bootstrap.min', 'map' %>
+<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBznTtN09qMJn5IN-kp0TmZsWM4jIDTcPc&callback=initMap"></script> -->
+
+
+</html>

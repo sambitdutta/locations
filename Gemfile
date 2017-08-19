@@ -53,3 +53,4 @@ end
 gem 'faker', group: :test
 
 gem 'bower-rails'
+gem 'acts_as_follower'
