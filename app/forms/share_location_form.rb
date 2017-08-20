@@ -19,7 +19,7 @@ class ShareLocationForm
 
   attr_accessor :follower_ids
   
-  validates :name, presence: true
+  validates :name, :latitude, :longitude, presence: true
   
   def location
     @location ||= Location.new
