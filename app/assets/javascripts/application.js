@@ -50,7 +50,7 @@ var drawMap = (function () {
             target: elem,
             view: new ol.View({
                 center: [latitude, longitude],
-                zoom: 5
+                zoom: 3
             })
         });
         
